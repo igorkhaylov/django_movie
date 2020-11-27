@@ -16,8 +16,16 @@
         <div class="main-banner bg bg1" id="home" style="">
             <header class="header">
                 <div class="container-fluid px-lg-5">
+                <div class="row">
+                    <div class="side-bar col-lg-3">
+                        Django School
+                    </div>
+                </div>
 
-                    <div class="left-ads-display col-lg-9">
+                </div>
+            </header>
+        <section>
+            <div class="left-ads-display col-lg-9">
 
                         <div class="row">
                             {% for movie in movie_list %}
@@ -28,7 +36,7 @@
                             <div class="col-md-4 product-men">
                                 <div class="product-shoe-info editContent text-center mt-lg-4">
                                     <div class="men-thumb-item">
-                                        <img src="" alt="" class="img-fluid">
+                                        <img src="{{ movie.poster.url }}" alt="" class="img-fluid">
                                     </div>
                                     <div class="item-info-product">
                                         <h4 class="">
@@ -58,10 +66,7 @@
                         </div>
                         {% endfor %}
                     </div>
-
-
-                </div>
-            </header>
+        </section>
         </div>
     </div>
 

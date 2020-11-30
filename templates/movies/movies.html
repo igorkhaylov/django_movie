@@ -24,23 +24,26 @@
 
                 </div>
             </header>
+
+
         <section>
             <div class="left-ads-display col-lg-9">
 
                         <div class="row">
+                        <div class="col-md-4 product-men">
                             {% for movie in movie_list %}
 
 
 
 
-                            <div class="col-md-4 product-men">
+
                                 <div class="product-shoe-info editContent text-center mt-lg-4">
                                     <div class="men-thumb-item">
-                                        <img src="{{ movie.poster.url }}" alt="" class="img-fluid">
+                                        <img src="{{ movie.poster.url }}" alt="" width="300px" height="400px" class="">
                                     </div>
                                     <div class="item-info-product">
                                         <h4 class="">
-                                            <a href="" class="editContent">
+                                            <a href="{{ movie.get_absolute_url }}" class="editContent">
                                                 {{ movie.title }}
                                             </a>
                                         </h4>
@@ -63,12 +66,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
                         {% endfor %}
+                        </div>
                     </div>
         </section>
-        </div>
     </div>
+    </div>
+
 
     <div class="cpy-right py-3">
         <div class="container">

@@ -144,7 +144,7 @@
                         <span class="sub-tittle editContent">{{ movie.reviews_set.count }}</span>
                         Оставить отзыв
                     </h3>
-                    <form action="{% url "add_review" movie.id %}" method="post" class="mt-4" id="formReview">
+                    <form action="{% url 'add_review' movie.id %}" method="post" class="mt-4" id="formReview">
                         {% csrf_token %}
                         <input type="hidden" name="parent" id="contactparent" value="">
                         <div class="form-group editContent">
@@ -178,7 +178,7 @@
         </div>
         {% for review in movie.get_review %}
             <div class="media py-5">
-                <img src="{% static "images/te2.jpg" %}" alt="image" class="mr-3 img-fluid">
+                <img src="{% static 'images/te2.jpg' %}" alt="image" class="mr-3 img-fluid">
                 <div class="media-body mt-4">
                     <h5 class="mt-0 editContent">
                         {{ review.name }}
@@ -193,7 +193,7 @@
 
                         <div class="media mt-5 editContent">
                             <a href="#" class="pr-3">
-                                <img src="{% static "images/te2.jpg" %}" alt="image" class="img-fluid">
+                                <img src="{% static 'images/te2.jpg' %}" alt="image" class="img-fluid">
                             </a>
                             <div class="media-body">
                                 <h5 class="mt-2 editContent">{{ rew.name }}</h5>

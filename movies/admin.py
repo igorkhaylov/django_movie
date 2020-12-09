@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from .models import Category, MovieShots, Raiting, Reviews, RaitingStar, Movie, Genre, Actor
 
 
@@ -14,12 +15,17 @@ class ReviewInline(admin.StackedInline):
     readonly_fields = ("name", "email", "parent")
 
 
+class MovieShotsInline(admin.StackedInline):
+    model = MovieShots
+    extra = 1
+
+
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "url", "draft")
     list_filter = ("category", "year")
     search_fields = ("title", "category__name")
-    inlines = [ReviewInline]
+    inlines = [MovieShotsInline, ReviewInline, ]
     save_on_top = True
     save_as = True
     list_editable = ("draft", )
@@ -63,7 +69,13 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
-    list_display = ("name", "age")
+    list_display = ("name", "age", "get_image")
+    readonly_fields = ("get_image", )
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src={obj.image.url} width="50" height="60"')
+
+    get_image.short_description = "Изображение"
 
 
 @admin.register(Raiting)
@@ -73,10 +85,21 @@ class RatingAdmin(admin.ModelAdmin):
 
 @admin.register(MovieShots)
 class MovieShotsAdmin(admin.ModelAdmin):
-    list_display = ("title", "movie")
+    list_display = ("title", "movie", "get_image")
+    readonly_fields = ("get_image", )
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src={obj.image.url} width="50" height="60"')
+
+    get_image.short_description = "Кадры фильма"
 
 
 admin.site.register(RaitingStar)
+
+
+admin.site.site_title = "Own Movies"
+admin.site.site_header = "My Movies"
+
 
 
 

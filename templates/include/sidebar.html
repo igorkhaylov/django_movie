@@ -1,3 +1,6 @@
+{% load movie_tag %}
+
+
 <div class="search-bar w3layouts-newsletter">
     <h3 class="sear-head editContent">Поиск фильма</h3>
 {#    <form action="{% url 'search' %}" method="get" class="d-flex editContent">#}
@@ -93,3 +96,6 @@
         </li>
     </ul>
 </div>
+{% get_last_movies count=2%}
+
+

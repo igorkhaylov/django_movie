@@ -1,3 +1,5 @@
+// alert("hello");
+
 function ajaxSend(url, params) {
     // Отправляем запрос
     fetch(`${url}?${params}`, {
@@ -12,14 +14,18 @@ function ajaxSend(url, params) {
 }
 
 // Filter movies
-// const forms = document.querySelector('form[name=filter]');
-//
+const forms = document.querySelector('form[name=filter]');
+
 // forms.addEventListener('submit', function (e) {
 //     // Получаем данные из формы
 //     e.preventDefault();
+//     alert("3")
 //     let url = this.action;
+//     alert("4")
 //     let params = new URLSearchParams(new FormData(this)).toString();
+//     alert("5")
 //     ajaxSend(url, params);
+//     alert("6")
 // });
 
 function render(data) {

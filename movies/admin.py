@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-
 from django import forms
-from .models import Category, MovieShots, Raiting, Reviews, RaitingStar, Movie, Genre, Actor
+from .models import Category, MovieShots, Rating, Reviews, RatingStar, Movie, Genre, Actor
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -14,9 +13,6 @@ class MovieAdminForm(forms.ModelForm):
     class Meta:
         model = Movie
         fields = '__all__'
-
-
-
 
 
 @admin.register(Category)
@@ -133,9 +129,9 @@ class ActorAdmin(admin.ModelAdmin):
     get_image.short_description = "Изображение"
 
 
-@admin.register(Raiting)
+@admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ("star", "ip")
+    list_display = ("star", "movie", "ip")
 
 
 @admin.register(MovieShots)
@@ -149,7 +145,7 @@ class MovieShotsAdmin(admin.ModelAdmin):
     get_image.short_description = "Кадры фильма"
 
 
-admin.site.register(RaitingStar)
+admin.site.register(RatingStar)
 
 
 admin.site.site_title = "Own Movies"

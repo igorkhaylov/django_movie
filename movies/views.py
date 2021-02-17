@@ -66,7 +66,7 @@ class ActorView(GenreYear, DetailView):
 
 class FilterMoviesView(GenreYear, ListView):
     """Фильтр фильмов"""
-    paginate_by = 2
+    paginate_by = 1
 
     def get_queryset(self):
         queryset = Movie.objects.filter(
@@ -118,3 +118,15 @@ class AddStarRating(View):
         else:
             return HttpResponse(status=400)
 
+
+class Search(ListView):
+    """Поиск фильмов"""
+    paginate_by = 1
+
+    def get_queryset(self):
+        return Movie.objects.filter(title__icontains=self.request.GET.get("q"))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["q"] = f'q={self.request.GET.get("q")}&'
+        return context

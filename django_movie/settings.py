@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.core.management.commands import makemessages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,12 +128,21 @@ USE_L10N = True
 USE_TZ = True
 
 
+# class Command(makemessages.Command):
+#     xgettext_options = makemessages.Command.xgettext_options + ['--keyword=mytrans']
+
+
+
+
 gettext = lambda s: s
 LANGUAGES = (
     ('ru', gettext("Russia")),
     ('en', gettext("English")),
 )
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')

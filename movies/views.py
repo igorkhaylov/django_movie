@@ -29,7 +29,7 @@ class MoviesView(GenreYear, ListView):
     """Список фильмов"""
     model = Movie
     queryset = Movie.objects.filter(draft=False)
-    paginate_by = 1
+    paginate_by = 3
 
 
 class MovieDetailView(GenreYear, DetailView):
@@ -67,7 +67,7 @@ class ActorView(GenreYear, DetailView):
 
 class FilterMoviesView(GenreYear, ListView):
     """Фильтр фильмов"""
-    paginate_by = 1
+    paginate_by = 3
 
     def get_queryset(self):
         queryset = Movie.objects.filter(
@@ -122,7 +122,7 @@ class AddStarRating(View):
 
 class Search(ListView):
     """Поиск фильмов"""
-    paginate_by = 1
+    paginate_by = 3
 
     def get_queryset(self):
         return Movie.objects.filter(title__icontains=self.request.GET.get("q"))

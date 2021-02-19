@@ -36,6 +36,7 @@
                         <a href="{% url 'account_signup' %}">Регистрация</a>
                     {% endif %}
                 </li>
+
                 <li>
                     <form action="{% url "set_language" %}" method="post">
                         {% csrf_token %}
